@@ -1,0 +1,52 @@
+#listing postgresql installations/available
+
+yum list postgresql\*
+
+
+#installing postgresql on centOS
+
+sudo yum install postgresql94 postgresql94-server postgresql94-libs postgresql94-docs
+
+
+#Initialize a PostgreSQL database cluster
+
+sudo /usr/pgsql-9.4/bin/postgresql94-setup initdb
+
+
+#Start PostgreSQL (STOP server replace with --> stop)
+
+sudo systemctl start postgresql-9.4
+
+
+#Configure PostgreSQL to start on boot (disable -- keyword)
+
+sudo systemctl enable postgresql-9.4
+
+
+#Change the postgres user’s Linux password
+
+sudo passwd postgres
+
+
+#From psql change postgres user password
+
+ALTER USER postgres WITH PASSWORD 'newpassword';
+
+
+
+#By default, PostgreSQL does not allow password authentication. We will change that by editing its host-based authentication (HBA) configuration.
+
+sudo vi /var/lib/pgsql/9.4/data/pg_hba.conf
+
+ replace "ident" with "md5" for TYPE:host & dB:all
+
+The deault home directory for the user postgres is at /var/lib/pgsql---This contains a path for the data directory, but no path for the executable/binary directory. To ammend this, add the path as below:
+
+[ -f /etc/profile ] && source /etc/profile  
+PGDATA=/var/lib/pgsql/9.1/data  
+export PGDATA
+#new lines added
+PATH=$PATH:$HOME/bin:/usr/pgsql-9.1/bin  
+export PATH
+
+Placing the binary directory in the path for postgres will allow you to invoke pg_ctl and other commands from the shell.
