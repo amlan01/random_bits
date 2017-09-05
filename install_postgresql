@@ -8,6 +8,11 @@ yum list postgresql\*
 sudo yum install postgresql94 postgresql94-server postgresql94-libs postgresql94-docs
 
 
+#Change the postgres user’s Linux password
+
+sudo passwd postgres
+
+
 #Initialize a PostgreSQL database cluster
 
 sudo /usr/pgsql-9.4/bin/postgresql94-setup initdb
@@ -22,10 +27,6 @@ sudo systemctl start postgresql-9.4
 
 sudo systemctl enable postgresql-9.4
 
-
-#Change the postgres user’s Linux password
-
-sudo passwd postgres
 
 
 #From psql change postgres user password
@@ -50,3 +51,31 @@ PATH=$PATH:$HOME/bin:/usr/pgsql-9.1/bin
 export PATH
 
 Placing the binary directory in the path for postgres will allow you to invoke pg_ctl and other commands from the shell.
+
+
+#install postgis
+
+sudo yum install postgis2_94 postgis2_94-client postgis2_94-utils
+
+
+#create spatial dB
+
+psql--> CREATE DATABASE postgis;
+
+
+#The core postgis extension installs PostGIS geometry, geography, raster, spatial_ref_sys and all the functions and comments with a simple:
+
+CREATE EXTENSION postgis;
+
+
+#Topology is packaged as a separate extension and installable with command:
+
+CREATE EXTENSION postgis_topology;
+
+
+#Details of installed postgis
+
+SELECT postgis_full_version();
+
+
+
