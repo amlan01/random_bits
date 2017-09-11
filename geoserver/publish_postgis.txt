@@ -1,0 +1,51 @@
+#Publishing data from a PostGIS dB installed in local cluster
+running over localhost:5432
+
+
+1. Data preparation
+
+Create a PostGIS database
+createdb sample
+psql -d sample -c 'CREATE EXTENSION postgis'
+
+Export .shp to .sql
+Import .sql into dB
+
+psql -f demo.sql sample
+
+
+
+2.Creating a new workspace
+
+Navigate to Data ‣ Workspaces.|| Click the Add new workspace button
+Enter the Name (sample1) and the Namespace URI --> submit
+
+
+3. Create a store
+
+Navigate to Data‣Stores
+In order to add the db connection, you need to create a new store. Click the Add new Store button
+Supported list of the data sources by GeoServer pops up
+Click PostGIS.
+
+Select the workspace (sample1) from the drop down menu.
+Enter the Data Source Name
+Enter a brief Description
+Specify the PostGIS database Connection Parameters:
+
+
+4. Creating a layer
+
+Navigate to Data ‣ Layers.
+Click Add a new resource
+From the New Layer chooser menu, select respective
+
+The Edit Layer page defines the data and publishing parameters for a layer. Enter a short Title and an Abstract
+Generate the layer’s bounding boxes by clicking the Compute from data and then Compute from native bounds links
+Click the Publishing tab at the top of the page
+We can set the layer’s style here. Under WMS Settings, ensure that the Default Style is set to polygon.
+
+
+5. Previewing the layer
+
+Navigate to the Layer Preview screen and openlayers
