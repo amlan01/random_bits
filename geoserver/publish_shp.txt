@@ -1,0 +1,40 @@
+Publishing a shape file in geoserver
+
+#geoserver deployed on tomcat 7.0+
+#tomcat server already running
+
+1. Creating a new workspace
+
+Navigate to Data ‣ Workspaces.|| Click the Add new workspace button
+Enter the Name (sample1) and the Namespace URI --> submit
+
+
+
+2. Create a store
+
+Navigate to Data‣Stores
+In order to add the shapefile, you need to create a new store. Click the Add new Store button
+Supported list of the data sources by GeoServer pops up
+Click Shapefile. The New Vector Data Source page will display
+
+Select the workspace (sample1) from the drop down menu.
+Enter the Data Source Name
+Enter a brief Description
+Under Connection Parameters, browse to the location URL of the shapefile,
+Click Save. You will be redirected to the New Layer page 
+
+
+
+3. Creating a layer
+
+On the New Layer page, click Publish beside our layer name
+The Edit Layer page defines the data and publishing parameters for a layer. Enter a short Title and an Abstract
+Generate the layer’s bounding boxes by clicking the Compute from data and then Compute from native bounds links.
+Click the Publishing tab at the top of the page.
+We can set the layer’s style here. Under WMS Settings, ensure that the Default Style is set to line
+
+
+
+4. Previewing the layer
+
+Navigate to the Layer Preview screen & open layers
